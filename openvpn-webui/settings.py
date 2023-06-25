@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'openvpn-webui.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 db_type = "sqlite"
-if db_type == 'mysql':
+if db_type == 'mysql' or db_type == 'mariadb':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',

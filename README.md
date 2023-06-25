@@ -17,5 +17,40 @@ openvpn网页管理界面
   日志管理
     通过指定日期区域查询用户上下线日志
     ![image](https://github.com/taoshanghu/openvpn-webui/blob/main/img/%E6%97%A5%E5%BF%97%E6%9F%A5%E8%AF%A2.png)
+
+安装步骤
+  1、下载源代码
+  git pull https://github.com/taoshanghu/openvpn-webui.git
+
+  2、切换到项目目录
+  cd openvpn-webui
+
+  3、数据库配置
+  数据库支持mysql、martadb、sqlite,默认使用sqlite
+  Fopenvpn-webui/settings.py
+    db_type = "sqlite"
+    if db_type == 'mysql' or db_type == 'mariadb':
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': "",
+                'USER': "",
+                'PASSWORD': "",
+                'HOST': "",
+                'PORT': 3306,
+            }
+        }
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+  3、执行安装脚本
+  ./install.sh
+
+
+
     
 
