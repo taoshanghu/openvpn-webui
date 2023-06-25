@@ -254,6 +254,7 @@ status openvpn-status.log
 verb 3
 crl-verify crl.pem
 script-security 3
+management 127.0.0.1 44490
 client-connect \"/usr/local/bin/openvpn_shell.sh connect\"
 client-disconnect \"/usr/local/bin/openvpn_shell.sh disconnect\"
 auth-user-pass-verify \"/usr/local/bin/openvpn_shell.sh check_user\" via-env" >> /etc/openvpn/server/server.conf
@@ -351,8 +352,6 @@ persist-tun
 remote-cert-tls server
 auth SHA512
 cipher AES-256-CBC
-ignore-unknown-option block-outside-dns
-block-outside-dns
 verb 3" > /etc/openvpn/server/client-common.txt
         # Enable and start the OpenVPN service
         systemctl enable --now openvpn-server@server.service
