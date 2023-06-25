@@ -1,0 +1,8 @@
+venv1*
+*.sqlite3
+vpn_conf
+*.pyc
+*.log
+.idea
+
+
