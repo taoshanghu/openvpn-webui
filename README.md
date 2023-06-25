@@ -47,7 +47,7 @@ openvpn网页管理界面
                 'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
             }
-        }  
+        }
   3、执行安装脚本
   ./install.sh
 
