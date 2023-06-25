@@ -361,5 +361,9 @@ verb 3" > /etc/openvpn/server/client-common.txt
         python3 manage.py migrate
         chmod 755 $MYDIR/start.sh
         $MYDIR/start.sh start 
+        mkdir $MYDIR/vpn_conf
+        chmod 777 $MYDIR/vpn_conf
+        cp $MYDIR/bin/openvpn_shell.sh /usr/local/bin
+        chmod 755 /usr/local/bin/openvpn_shell.sh
 fi
 
