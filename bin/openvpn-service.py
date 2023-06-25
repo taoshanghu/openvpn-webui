@@ -10,7 +10,7 @@ proc_status2 = Value('i',0)
 Process_list = 1
 
 
-OPEMVPN_HOST = "172.19.1.19"
+OPEMVPN_HOST = "127.0.0.1"
 OPEMVPN_PORT = 44490
 SECRET_KEY = "!b#ulek-d*r-kec5ny(fn*r=88h9cf5xr#e+9^k2!(!gq$gvx1"
 

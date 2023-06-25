@@ -178,13 +178,13 @@ LimitNPROC=infinity" > /etc/systemd/system/openvpn-server@server.service.d/disab
         fi
         if [[ "$os" = "debian" || "$os" = "ubuntu" ]]; then
                 apt-get update
-                apt-get install -y openvpn openssl ca-certificates $firewall python3 python3-pip
+                apt-get install -y openvpn openssl ca-certificates $firewall python3 python3-pip nginx
         elif [[ "$os" = "centos" ]]; then
                 yum install -y epel-release
-                yum install -y openvpn openssl ca-certificates tar $firewall python3 python3-pip
+                yum install -y openvpn openssl ca-certificates tar $firewall python3 python3-pip nginx
         else
                 # Else, OS must be Fedora
-                dnf install -y openvpn openssl ca-certificates tar $firewall python3 python3-pip
+                dnf install -y openvpn openssl ca-certificates tar $firewall python3 python3-pip nginx
         fi
         # If firewalld was just installed, enable it
         if [[ "$firewall" == "firewalld" ]]; then
@@ -365,5 +365,9 @@ verb 3" > /etc/openvpn/server/client-common.txt
         chmod 777 $MYDIR/vpn_conf
         cp $MYDIR/bin/openvpn_shell.sh /usr/local/bin
         chmod 755 /usr/local/bin/openvpn_shell.sh
+        sed -i 's/80;/808;/g' /etc/nginx/nginx.conf
+        cp $MYDIR/openvpn-webui.conf /etc/nginx/conf.d/
+        system start nginx
+        system enable nginx
 fi
 
