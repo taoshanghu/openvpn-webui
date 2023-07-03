@@ -103,12 +103,14 @@ class open_vpn(object):
             "virtual_addr": list_client_data[3],
             "client_id": list_client_data[10]
         }
-        new_rece_flow = int(list_client_data[5]) / 1000
-        new_sent_flow = int(list_client_data[6]) / 1000
+        new_rece_flow = int(int(list_client_data[5]) / 1000)
+        new_sent_flow = int(int(list_client_data[6]) / 1000)
         if data["username"] in tmp_flow.keys():
             if new_rece_flow >= tmp_flow[data["username"]]["rece_flow"] and new_sent_flow >= tmp_flow[data["username"]]["sent_flow"]:
                 data["rece_flow"] = new_rece_flow - tmp_flow[data["username"]]["rece_flow"]
                 data["sent_flow"] = new_sent_flow - tmp_flow[data["username"]]["sent_flow"]
+                tmp_flow[data["username"]]["rece_flow"] = new_rece_flow
+                tmp_flow[data["username"]]["sent_flow"] = new_sent_flow
             else:
                 data["rece_flow"] = new_rece_flow
                 data["sent_flow"] = new_sent_flow
